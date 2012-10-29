@@ -6,7 +6,6 @@ module Slashjoin
   ALREADY_LOADED[:string] = true
   module String
     def / (other)
-      p Slashjoin::use_pathname?
       case
       when self =~ ::URI.regexp
         ::URI.join(self, other)
