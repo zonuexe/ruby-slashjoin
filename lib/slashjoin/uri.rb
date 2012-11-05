@@ -6,7 +6,7 @@ module Slashjoin
 
   module URI
     def / (other)
-      self.join(other)
+      ::URI.join(self,other)
     end
   end
 end
