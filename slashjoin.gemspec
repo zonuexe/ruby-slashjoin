@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["tadsan@zonu.me"]
   gem.description   = %q{add String#/ method, do {file|URI} path join}
   gem.summary       = %q{atode kaku.}
-  gem.homepage      = ""
+  gem.homepage      = 'https://github.com/zonuexe/ruby-slashjoin'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
