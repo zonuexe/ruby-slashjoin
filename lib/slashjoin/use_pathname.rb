@@ -1,5 +1,5 @@
 module Slashjoin
-  @@use_pathname = true
+  use_pathname
 end
 
 require 'slashjoin'

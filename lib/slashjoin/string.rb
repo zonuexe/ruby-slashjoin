@@ -1,9 +1,9 @@
+require 'slashjoin/class'
 require 'uri'
 require 'pathname'
 
 module Slashjoin
-  ALREADY_LOADED ||= {}
-  ALREADY_LOADED[:string] = true
+  loaded_classes[:string] = true
   module String
     def / (other)
       case

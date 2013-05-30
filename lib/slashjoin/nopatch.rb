@@ -1,3 +1,3 @@
 module Slashjoin
-  @@no_patch = true
+  no_patch
 end

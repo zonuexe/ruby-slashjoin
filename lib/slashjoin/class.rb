@@ -1,8 +1,18 @@
 require 'slashjoin/version'
 
 module Slashjoin
-  def self.no_patching?
-    @@no_patching
+  @@no_patch = false
+  @@use_pathname = false
+
+  # @return [Slashjoin]
+  def self.no_patch
+    @@no_patch = true
+    return self
+  end
+
+  # return [Boolean]
+  def self.no_patch?
+    @@no_patch
   end
 
   # @return [Slashjoin]
@@ -13,7 +23,7 @@ module Slashjoin
 
   # @return [Boolean]
   def self.use_pathname?
-    @@use_pathname ||= false
+    @@use_pathname
   end
 
   # @return [Hash]
@@ -24,5 +34,11 @@ module Slashjoin
   # @return [Boolean]
   def self.already_loaded?
     loaded_classes.any?
+  end
+
+  # @return [Slashjoin]
+  def self.patching
+    require 'slashjoin/patching'
+    return self
   end
 end

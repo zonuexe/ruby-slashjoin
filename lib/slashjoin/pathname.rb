@@ -1,8 +1,8 @@
+require 'slashjoin/class'
 require 'pathname'
 
 module Slashjoin
-  ALREADY_LOADED ||= {}
-  ALREADY_LOADED[:pathname] = true
+  loaded_classes[:pathname] = true
 
   module Pathname
     def / (other)
@@ -10,4 +10,3 @@ module Slashjoin
     end
   end
 end
-
