@@ -1,33 +1,34 @@
 # -*- coding: utf-8 -*-
 
-$: << File.expand_path(File.dirname(__FILE__))
+$:.unshift(File.expand_path(File.dirname(__FILE__)))
+
 require 'spec_helper'
 require 'slashjoin'
 
 describe Slashjoin do
   context String do
-    it "join to URI path name" do
-      base = "https://github.com/"
-      user = "zonuexe/"
-      project = "ruby-slashjoin"
-      user_uri = base / user
-      user_uri.should == URI.parse("https://github.com/zonuexe/")
-      proj_uri = user_uri / project
-      proj_uri.should == URI.parse("https://github.com/zonuexe/ruby-slashjoin")
+    context "join to URI path name" do
+      let(:base){ "https://github.com/" }
+      let(:user){ "zonuexe/" }
+      let(:project){ "ruby-slashjoin" }
+      let(:user_uri){ base / user }
+      it{ expect(user_uri).to eq URI.parse("https://github.com/zonuexe/") }
+      let(:proj_uri){ user_uri / project }
+      it{ expect(proj_uri).to eq URI.parse("https://github.com/zonuexe/ruby-slashjoin") }
     end
-    it "join to UNIX like path name" do
-      home = "/home"
-      megurine_home = (home / "megurine")
-      megurine_home.should == "/home/megurine"
-      megurine_home.class.should == String
+    context "join to UNIX like path name" do
+      let(:home){ "/home" }
+      let(:megurine_home){ home / "megurine" }
+      it{ expect(megurine_home).to eq "/home/megurine" }
+      it{ expect(megurine_home).to be_a String }
     end
   end
   context Pathname do
-    it "join to" do
-      home = Pathname.new("/home")
-      megurine_home = (home / "megurine")
-      megurine_home.should == Pathname.new("/home/megurine")
-      megurine_home.class.should == Pathname
+    context "join to" do
+      let(:home){ Pathname.new("/home") }
+      let(:megurine_home){ home / "megurine" }
+      it{ expect(megurine_home).to eq Pathname.new("/home/megurine") }
+      it{ expect(megurine_home).to be_a Pathname }
     end
   end
 end
