@@ -1,8 +1,8 @@
+require 'slashjoin/class'
 require 'uri'
 
 module Slashjoin
-  ALREADY_LOADED ||= {}
-  ALREADY_LOADED[:uri] = true
+  loaded_classes[:uri] = true
 
   module URI
     def / (other)
